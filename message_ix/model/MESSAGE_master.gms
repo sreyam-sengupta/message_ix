@@ -45,7 +45,7 @@ $ONGLOBAL
 *----------------------------------------------------------------------------------------------------------------------*
 
 ** scenario/case selection - this must match the name of the MsgData_<%%%>.gdx input data file **
-$SETGLOBAL data "<your datafile name here>"
+$SETGLOBAL data "MESSAGEix-MAGPIE-R12-JustMIP-MP00BI78-nov24_1000f"
 
 ** MACRO mode
 * "none": MESSAGEix is run in stand-alone mode
@@ -76,7 +76,7 @@ $SETGLOBAL AUX_BOUND_VALUE "1e9"
 
 * include relaxations for specific constraint blocks to identify infeasibilities during model development/calibration
 * by adding 'slack' variables in the constraints and associated penalty factors in the objective function
-$SETGLOBAL SLACK_COMMODITY_EQUIVALENCE "*"
+$SETGLOBAL SLACK_COMMODITY_EQUIVALENCE ""
 
 $SETGLOBAL SLACK_CAP_NEW_BOUND_UP "*"
 $SETGLOBAL SLACK_CAP_NEW_BOUND_LO "*"

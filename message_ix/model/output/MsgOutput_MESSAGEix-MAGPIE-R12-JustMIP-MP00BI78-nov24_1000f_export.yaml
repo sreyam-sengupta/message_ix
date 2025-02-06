@@ -1,0 +1,35 @@
+- GDXReader:
+    file: /home/senguptas/Energy/message_ix/message_ix/model/output/MsgOutput_MESSAGEix-MAGPIE-R12-JustMIP-MP00BI78-nov24_1000f.gdx
+    symbols: 
+      - name: land_output
+      - name: LAND
+- Filter:
+    name: land_output
+    newName: land_output_filter_
+    labelFilters:
+      - column: 3
+        reject: ['1990', '1995', '2000', '2005', '2010', '2015', '2020', '2025']
+      - column: 4
+        keep: ['bioenergy']
+      - column: 5
+        keep: ['land_use']
+- Filter:
+    name: LAND
+    newName: LAND_filter_
+    valueFilters:
+      - column: level
+        rule: (x<0) | (x>0)
+- Projection:
+    name: LAND_filter_(0,1,2)
+    newName: LAND_proj_(0,1,2)
+    asParameter: true
+- PandasExcelWriter:
+    file: /home/senguptas/Energy/message_ix/message_ix/model/output/MsgOutput_MESSAGEix-MAGPIE-R12-JustMIP-MP00BI78-nov24_1000f_export.xlsx
+    excelWriterArguments: { engine: null, mode: w, if_sheet_exists: null}
+    symbols:
+      - name: land_output_filter_
+        range: land_output!A1
+        rowDimension: 6
+      - name: LAND_proj_
+        range: LAND!A1
+        rowDimension: 3
